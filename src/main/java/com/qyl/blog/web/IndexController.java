@@ -10,18 +10,24 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
-        int i = 9 / 0;
-
-        String blog = null;
-        if(blog == null) {
-            throw  new NotFoundException("博客不春在");
-        }
+//        int i = 9 / 0;
+//
+//        String blog = null;
+//        if(blog == null) {
+//            throw  new NotFoundException("博客不春在");
+//        }
         return "index";
     }
 
-    @GetMapping("/{id}/{name}")
-    public String index(@PathVariable Integer id, @PathVariable String name) {
-        System.out.println("----- index -----");
-        return "index";
+//    @GetMapping("/{id}/{name}")
+//    public String index(@PathVariable Integer id, @PathVariable String name) {
+//        System.out.println("----- index -----");
+//        return "index";
+//    }
+
+    @GetMapping("/blog")
+    public String blog() {
+        System.out.println("----- /blog ------");
+        return "blog";
     }
 }
