@@ -105,6 +105,7 @@
                         <td th:text="${blog.title}">刻意练习清单</td>
                         <td th:text="${blog.type.name}">认知升级</td>
                         <td th:text="${blog.recommend} ? '是' : '否'">是</td>
+                        <td th:text="${blog.published} ? '草稿' : '发布'">草稿</td>
                         <td th:text="${blog.updateTime}">2019-08-08 20:57</td>
                         <td>
                             <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
@@ -115,7 +116,7 @@
 
                     <tfoot>
                     <tr>
-                        <th colspan="6">
+                        <th colspan="7">
                             <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
                                 <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
                                 <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item" th:unless="${page.last}">下一页</a>
@@ -195,6 +196,22 @@
     });
 
     $('.dropdown').dropdown();
+
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+
+    $('#clear-btn')
+        .on('click', function() {
+            $('.ui.type.dropdown')
+                .dropdown('clear')
+            ;
+        })
+    ;
 
     function page(obj) {
         $("[name='page']").val($(obj).data("page"));
