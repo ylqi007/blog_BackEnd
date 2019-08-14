@@ -12,10 +12,13 @@ public class Blog {
     @Id
     @GeneratedValue
     private Long id;
+
     private String title;
+
     @Basic(fetch = FetchType.LAZY)
     @Lob
     private String content;
+
     private String firstPicture;
     private String flag;
     private Integer views;
@@ -24,8 +27,10 @@ public class Blog {
     private boolean commentable;
     private boolean published;
     private boolean recommend;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
 
@@ -41,6 +46,14 @@ public class Blog {
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
 
+    @Transient
+    private String tagIds;
+
+    private String description;
+
+    public Blog() {
+    }
+
     public String getTagIds() {
         return tagIds;
     }
@@ -49,13 +62,13 @@ public class Blog {
         this.tagIds = tagIds;
     }
 
-    @Transient
-    private String tagIds;
-
-
-    public Blog() {
+    public String getDescription() {
+        return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -216,10 +229,6 @@ public class Blog {
         }
     }
 
-
-
-
-
     @Override
     public String toString() {
         return "Blog{" +
@@ -236,6 +245,12 @@ public class Blog {
                 ", recommend=" + recommend +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", type=" + type +
+                ", tags=" + tags +
+                ", user=" + user +
+                ", comments=" + comments +
+                ", tagIds='" + tagIds + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
