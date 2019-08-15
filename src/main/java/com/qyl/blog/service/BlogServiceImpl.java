@@ -4,6 +4,7 @@ import com.qyl.blog.NotFoundException;
 import com.qyl.blog.dao.BlogRepository;
 import com.qyl.blog.po.Blog;
 import com.qyl.blog.po.Type;
+import com.qyl.blog.util.MarkdownUtils;
 import com.qyl.blog.util.MyBeanUtils;
 import com.qyl.blog.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
@@ -60,6 +61,19 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Page<Blog> listBlog(String query, Pageable pageable) {
         return blogRepository.findByQuery(query, pageable);
+    }
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogRepository.getOne(id);
+        if(blog == null) {
+            throw new NotFoundException("博客不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog, b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        return b;
     }
 
     @Override

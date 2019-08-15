@@ -36,6 +36,13 @@
 /*body, button, input, select, textarea {*/
 /*  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;*/
 /*}*/
+
+.typo li {
+  font-weight: 300;
+  padding: 4px 0;
+}
+
+
 .typo button, .typo input, .typo select, .typo textarea {
   font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
