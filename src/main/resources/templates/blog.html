@@ -45,33 +45,34 @@
             <div class="ui top attached segment">
                 <div class="ui horizontal linked list">
                     <div class="item">
-                        <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
-                        <div class="content"><a href="#" class="header">ylqi007</a></div>
+                        <img src="https://unsplash.it/100/100?image=1005" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
+                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">ylqi007</a></div>
                     </div>
                     <div class="item">
-                        <i class="calendar alternate outline icon"></i> 2019-08-08
+                        <i class="calendar alternate outline icon"></i><span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2019-08-08</span>
                     </div>
                     <div class="item">
-                        <i class="eye icon"></i> 浏览: 123
+                        <i class="eye icon"></i><span th:text="${blog.views}">123</span>
                     </div>
                 </div>
             </div>
 
 <!--            picture-->
             <div class="ui attached segment">
-                <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui fluid rounded image">
+                <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid rounded image">
             </div>
 
 <!--            content-->
             <div class="ui attached padded segment">
                 <div class="ui right aligned basic segment">
-                    <div class="ui orange basic label">原创</div>
+                    <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
                 </div>
 
-                <h2 class="ui center aligned header">刻意练习</h2>
+                <h2 class="ui center aligned header" th:text="${blog.title}">刻意练习</h2>
                 <br>
 
-                <div id="content" class="js-toc-content typo typo-selection m-padded-lr-responsive m-padded-tb-large">
+                <div id="content" class="js-toc-content typo typo-selection m-padded-lr-responsive m-padded-tb-large" th:text="${blog.content}">
+                    <!--/*-->
                     <pre><code class="language-css">p {color: red}</code></pre>
 <!--                    <h1>中文网页重设与排版：<i class="serif">Typo.css</i></h1><br/>-->
 
@@ -450,11 +451,12 @@ h5,h6{font-size:1em;}
 
                     <p><i class="serif">Typo.css</i> 基于 <a href="http://zh.wikipedia.org/wiki/MIT_License">MIT License</a> 开源，使用代码只需说明来源，或者引用 <a
                             href="http://typo.sofi.sh/license.txt">license.txt</a> 即可。</p>
+                    <!--*/-->
                 </div>
 
 <!--                label-->
                 <div class="m-padded-lr-responsive">
-                    <div class="ui basic teal left pointing label">方法论</div>
+                    <div class="ui basic teal left pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</div>
                 </div>
 
 <!--                contribution-->
@@ -466,11 +468,11 @@ h5,h6{font-size:1em;}
                     <div class="ui orange basic label">
                         <div class="ui images" style="font-size: inherit">
                             <div class="image">
-                                <img src="../static/images/WeChat_QR.jpg" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <img src="../static/images/WeChat_QR.jpg" th:src="@{/images/WeChat_QR.jpg}" alt="" class="ui rounded bordered image" style="width: 120px">
                                 <div>支付宝</div>
                             </div>
                             <div class="image">
-                                <img src="../static/images/WeChat_QR.jpg" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <img src="../static/images/WeChat_QR.jpg" th:src="@{/images/WeChat_QR.jpg}" alt="" class="ui rounded bordered image" style="width: 120px">
                                 <div>微信</div>
                             </div>
                         </div>
@@ -485,8 +487,8 @@ h5,h6{font-size:1em;}
                 <div class="ui middle aligned grid">
                     <div class="eleven wide column">
                         <div class="list">
-                            <li>作者: ylqi</li>
-                            <li>发表时间: 2019-08-08</li>
+                            <li>作者: <span th:text="${blog.user.nickname}">ylqi</span><a href="#" th:href="@{/about}" target="_blank"> (联系作者) </a></li>
+                            <li>发表时间: <span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd HH:mm')}">2019-08-08</span></li>
                             <li>版权声明: </li>
                             <li>转载说明: </li>
                         </div>
