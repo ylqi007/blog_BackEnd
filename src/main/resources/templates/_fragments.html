@@ -57,10 +57,14 @@
 
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">用户故事(User Story)</a>
-                    <a href="#" class="item">用户故事(User Story)</a>
-                    <a href="#" class="item">用户故事(User Story)</a>
+                <div id="newBlog-container">
+                    <div class="ui inverted link list" th:fragment="newblogList">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="item" target="_blank" th:each="blog: ${newblogs}" th:text="${blog.title}">用户故事(User Story)</a>
+                        <!--/*-->
+                        <a href="#" class="item">用户故事(User Story)</a>
+                        <a href="#" class="item">用户故事(User Story)</a>
+                        <!--*/-->
+                    </div>
                 </div>
             </div>
 
@@ -94,6 +98,10 @@
     <script src="../static/lib/tocbot/tocbot.js" th:src="@{/lib/tocbot/tocbot.js}"></script>
     <script src="../static/lib/qrcode/qrcode.js" th:src="@{/lib/qrcode/qrcode.js}"></script>
     <script src="../static/lib/waypoints/jquery.waypoints.js" th:src="@{/lib/waypoints/jquery.waypoints.js}"></script>
+
+    <script>
+        $('#newBlog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+    </script>
 </th:block>
 
 </body>
