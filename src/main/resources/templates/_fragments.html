@@ -20,7 +20,7 @@
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui teal header item">Blog</h2>
 
-                <a href="#" th:href="@{/}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="small home icon"></i>首页</a>
+                <a href="#" th:href="@{/}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="small home icon"></i><span th:text="#{nav.index}">首页</span></a>
                 <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="small idea icon"></i>分类</a>
                 <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="small tags icon"></i>标签</a>
                 <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="small clone icon"></i>归档</a>
@@ -71,7 +71,7 @@
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
                 <div class="ui inverted link list">
-                    <a href="#" class="item">Email: ylqi007@126.com</a>
+                    <a href="#" class="item" th:text="#{index.email}">Email: ylqi007@126.com</a>
                     <a href="#" class="item">QQ: 12345678</a>
                 </div>
             </div>
